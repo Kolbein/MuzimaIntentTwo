@@ -23,7 +23,11 @@ class SecondActivity : AppCompatActivity() {
         when {
             intent?.action == "example.kfold.muzimaintenttwo.ACTION_REQUEST_RESOURCE" -> {
                 var resultIntent = Intent()
-                resultIntent.putExtra("result", "{name: \"Kolbein\"}")
+                var encounter = Encounter("Good", 1, "Encounter1")
+                var encounterJson = gson.toJson(encounter)
+
+                resultIntent.putExtra("resource", encounterJson)
+                resultIntent.putExtra("class", "encounter")
                 setResult(RESULT_OK, resultIntent)
                 finish()
             }
